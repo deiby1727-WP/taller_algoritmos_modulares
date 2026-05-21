@@ -4,33 +4,51 @@ internal class Program
 {
     public static void Main(string[] args)
     {
-        int opcion;
+        menu_principal();
+    }
 
-        do
+    public static void menu_principal()
+    {
+        Console.WriteLine("--- BIENVENIDO USUARIO ---");
+        Console.WriteLine("1. Sistema de control de turnos IPS");
+        Console.WriteLine("2. Sistema de control academico de notas");
+        Console.WriteLine("3. Sistema de parqueadero");
+        Console.WriteLine("4. Salir");
+
+        int opcion = int.Parse(Console.ReadLine());
+
+        if (opcion == 1)
         {
-            Console.WriteLine("\nMENU PRINCIPAL");
-            Console.WriteLine("1. Punto 1 (IPS)");
-            Console.WriteLine("2. Punto 3 (Estudiantes)");
-            Console.WriteLine("3. Punto 4");
-            Console.WriteLine("4. Salir");
-
-            opcion = int.Parse(Console.ReadLine());
-
-            switch (opcion)
+            punto1.ips();
+            menu_principal();
+        }
+        else
+        {
+            if (opcion == 2)
             {
-                case 1:
-                    punto1.menu();
-                    break;
-
-                case 2:
-                    punto3.menu();
-                    break;
-
-                case 3:
-                    punto4.menu();
-                    break;
+                punto3.registro_estudiantes();
+                menu_principal();
             }
-
-        } while (opcion != 4);
+            else
+            {
+                if (opcion == 3)
+                {
+                    punto4.funcion();
+                    menu_principal();
+                }
+                else
+                {
+                    if (opcion == 4)
+                    {
+                        Environment.Exit(0);
+                    }
+                    else
+                    {
+                        Console.WriteLine("Opcion invalida");
+                        menu_principal();
+                    }
+                }
+            }
+        }
     }
 }
